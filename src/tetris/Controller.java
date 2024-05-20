@@ -11,9 +11,6 @@ public class Controller
 	//Board의 정사각형 한 변의 길이
 	public static final int		SQUARE_SIZE = 25;
 
-	//drop()이 실행되는 주기(ms)
-	public static int			TIME_GAP = 1000;
-
 	/*
 	 * 각 줄 제거시 얻는 점수의 양
 	 * 1줄 : 100
@@ -92,6 +89,9 @@ public class Controller
 		new Color(255, 0, 0) };
 
 
+	//drop()이 실행되는 주기(ms)
+	public static int			TIME_GAP = 1000;
+	
 	//main 프레임의 sidePanel
 	private SidePanel			sidePanel;
 

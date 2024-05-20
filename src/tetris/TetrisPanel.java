@@ -154,6 +154,8 @@ public class TetrisPanel extends JPanel implements Runnable
 				controller.board[i][j + 1] = controller.board[i][j];
 			}
 		}
+		if (Controller.TIME_GAP >= 250)
+			Controller.TIME_GAP -= 10;
 		return ;
 	}
 
@@ -166,7 +168,7 @@ public class TetrisPanel extends JPanel implements Runnable
 		boolean	gap;
 		int		clearNo = 0;
 
-		for (int j = Controller.BOARD_HEIGHT; j > 0; j--)
+		for (int j = Controller.BOARD_HEIGHT + 1; j > 0; j--)
 		{
 			gap = false;
 			for (int i = 1; i < Controller.BOARD_WIDTH + 1; i++)
@@ -229,10 +231,6 @@ public class TetrisPanel extends JPanel implements Runnable
 			try
 			{
 				Thread.sleep(Controller.TIME_GAP);
-				if (Controller.TIME_GAP >= 100)
-				{
-					Controller.TIME_GAP -= 5;
-				}
 				drop();
 			}
 			catch (InterruptedException e)
