@@ -95,9 +95,11 @@ public class Controller
 	//main 프레임의 sidePanel
 	private SidePanel			sidePanel;
 
-
 	//main 프레임의 tetrisPanel
 	private TetrisPanel			tetrisPanel;
+
+	//main 프레임의 topPanel
+	private TopPanel			topPanel;
 
 	//게임이 이루어지는 보드의 상황을 저장하는 객체
 	public Color[][]			board;
@@ -116,6 +118,12 @@ public class Controller
 
 	//다음 2개의 piece의 종류 정보
 	private int[]				queue = new int[2];
+
+	//홀드한 piece의 종류 정보
+	private int					holdPiece = -1;
+
+	//이번 piece를 홀드하였는가 여부
+	private boolean				isHold = false;
 
 	//현재 게임에서 제거한 줄 수
 	private int					lines = 0;
@@ -203,6 +211,40 @@ public class Controller
 	}
 
 	/*
+	 * holdPiece의 값을 반환함
+	 */
+	public int	getHoldPiece()
+	{
+		return (holdPiece);
+	}
+
+	/*
+	 * holdPiece에 인자 값을 대입함
+	 */
+	public void	setHoldPiece(int holdPiece)
+	{
+		this.holdPiece = holdPiece;
+		return ;
+	}
+
+	/*
+	 * isHold의 값을 반환함
+	 */
+	public boolean	getIsHold()
+	{
+		return (isHold);
+	}
+
+	/*
+	 * isHold에 인자 값을 대입함
+	 */
+	public void	setIsHold(boolean isHold)
+	{
+		this.isHold = isHold;
+		return ;
+	}
+
+	/*
 	 * sidePanel 반환
 	 */
 	public SidePanel getSidePanel()
@@ -233,6 +275,23 @@ public class Controller
 	public void	setTetrisPanel(TetrisPanel tetrisPanel)
 	{
 		this.tetrisPanel = tetrisPanel;
+		return ;
+	}
+
+	/*
+	 * topPanel 반환
+	 */
+	public TopPanel	getTopPane()
+	{
+		return (topPanel);
+	}
+
+	/*
+	 * topPanel 저장
+	 */
+	public void	setTopPanel(TopPanel topPanel)
+	{
+		this.topPanel = topPanel;
 		return ;
 	}
 
@@ -288,6 +347,7 @@ public class Controller
 		setPieceQueue();
 		tetrisPanel.initBoard();
 		sidePanel.setSidePanel();
+		topPanel.initTopPanel();
 		playing = true;
 		new Thread(tetrisPanel).start();
 		new Thread(sidePanel).start();
@@ -300,6 +360,15 @@ public class Controller
 	public void updateSidePanel()
 	{
 		sidePanel.setSidePanel();
+		return ;
+	}
+
+	/*
+	 * topPanel을 업데이트함
+	 */
+	public void	updateTopPanel()
+	{
+		topPanel.setTopPanel();
 		return ;
 	}
 

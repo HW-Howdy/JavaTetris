@@ -13,7 +13,7 @@ import javax.swing.border.LineBorder;
 
 public class SidePanel extends JPanel implements Runnable
 {
-	private static final String	IMAGE_PATH = "../../nextpieces/";
+	private static final String	IMAGE_PATH = "./../../nextpieces/";
 	/*
 	 * Controller 객체
 	 */

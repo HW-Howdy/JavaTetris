@@ -12,15 +12,16 @@ public class Main extends JFrame
 	 * Main 생성자. Main 프레임을 생성 후 초기화 함
 	 * 또한 하위 패널들을 add함
 	 */
-	public Main(SidePanel sidePanel, TetrisPanel tetrisPanel)
+	public Main(SidePanel sidePanel, TetrisPanel tetrisPanel, TopPanel topPanel)
 	{
 		super("Tetris");
-		setSize(494, 665);
-		setLocation(0, 0);
+		setSize(494, 750);
+		setLocation(100, 50);
 		setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
 		setLayout(new BorderLayout(10, 0));
 		add(sidePanel, BorderLayout.EAST);
 		add(tetrisPanel, BorderLayout.CENTER);
+		add(topPanel, BorderLayout.NORTH);
 
 		addKeyListener(new KeyListener()
 		{
@@ -36,16 +37,16 @@ public class Main extends JFrame
 				switch (e.getKeyCode()) {
 					case KeyEvent.VK_UP:
 						tetrisPanel.rotate(+1);
-						break;
+						break ;
 					case KeyEvent.VK_DOWN:
 						tetrisPanel.drop();
-						break;
+						break ;
 					case KeyEvent.VK_LEFT:
 						tetrisPanel.move(-1);
-						break;
+						break ;
 					case KeyEvent.VK_RIGHT:
 						tetrisPanel.move(+1);
-						break;
+						break ;
 					case KeyEvent.VK_SPACE:
 						while (!tetrisPanel.isTouched(	tetrisPanel.getController().getPieceLocation().x,
 														tetrisPanel.getController().getPieceLocation().y + 1,
@@ -56,6 +57,9 @@ public class Main extends JFrame
 						tetrisPanel.doOnWallTouched();
 						tetrisPanel.getController().addScore(Controller.HARD_DROP_BONUS_SCORE);
 						break;
+					case KeyEvent.VK_SHIFT:
+						tetrisPanel.hold();
+						break ;
 				}
 			}
 		});
@@ -70,10 +74,12 @@ public class Main extends JFrame
 		Controller		controller = new Controller();
 		SidePanel		sidePanel = new SidePanel(controller);
 		TetrisPanel		tetrisPanel = new TetrisPanel(controller);
-		Main			main = new Main(sidePanel, tetrisPanel);
+		TopPanel		topPanel = new TopPanel(controller);
+		Main			main = new Main(sidePanel, tetrisPanel, topPanel);
 
 		controller.setSidePanel(sidePanel);
 		controller.setTetrisPanel(tetrisPanel);
+		controller.setTopPanel(topPanel);
 		controller.initGame();
 		main.setVisible(true);
 		return ;

@@ -143,6 +143,36 @@ public class TetrisPanel extends JPanel implements Runnable
 	}
 
 	/*
+	 * piece를 홀드하는 기능으로, 다음과 같음
+	 * 1. 현재 홀드한 piece가 없다면, 지금 piece를 홀드하고 다음 piece를 불러옴
+	 * 2. 현재 홀드한 piece가 있다면, 지금 piece를 홀드하고 홀드한 piece를 불러옴
+	 */
+	public void	hold()
+	{
+		int	temp;
+		if (!controller.getIsHold())
+		{
+			if (controller.getHoldPiece() == -1)
+			{
+				controller.setHoldPiece(controller.shape);
+				controller.shape = controller.getNextPiece();
+				controller.updateSidePanel();
+			}
+			else
+			{
+				temp = controller.shape;
+				controller.shape = controller.getHoldPiece();
+				controller.setHoldPiece(temp);
+				controller.setPieceLoaction(new Point(5, 1));
+			}
+			controller.updateTopPanel();
+			controller.setIsHold(true);
+			getParent().repaint();
+		}
+		return ;
+	}
+
+	/*
 	 * 줄을 제거하는 메소드
 	 */
 	public void	deleteRow(int row)
@@ -214,6 +244,7 @@ public class TetrisPanel extends JPanel implements Runnable
 		{
 			controller.addScore(Controller.SCORE_PER_PIECE);
 			clearRows();
+			controller.setIsHold(false);
 			controller.shape = controller.getNextPiece();
 			controller.updateSidePanel();
 		}
