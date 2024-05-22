@@ -1,5 +1,9 @@
 import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
@@ -118,6 +122,9 @@ public class Controller
 
 	//다음 2개의 piece의 종류 정보
 	private int[]				queue = new int[2];
+
+	//piece의 porket
+	private ArrayList<Integer>	porket = new ArrayList<>();
 
 	//홀드한 piece의 종류 정보
 	private int					holdPiece = -1;
@@ -324,7 +331,7 @@ public class Controller
 		setPieceLoaction(new Point(5, 1));
 		rotation = 0;
 		queue[0] = queue[1];
-		queue[1] = (int) (Math.random() * 7);
+		queue[1] = getPieceFromPorket();
 		return (nextpiece);
 	}
 
@@ -333,9 +340,40 @@ public class Controller
 	 */
 	private void	setPieceQueue()
 	{
-		queue[0] = (int) (Math.random() * 7);
-		queue[1] = (int) (Math.random() * 7);
+		queue[0] = getPieceFromPorket();
+		queue[1] = getPieceFromPorket();
 		return ;
+	}
+
+	/*
+	 * porket을 채워넣고 셔플함
+	 */
+	private void setPiecePorket()
+	{
+		porket.clear();
+		for (int i = 0; i < 7; i++)
+		{
+			for (int j = 0; j < 1; j++)
+			{
+				porket.add(i);
+			}
+		}
+		Collections.shuffle(porket);
+		return ;
+	}
+
+	/*
+	 * porket에서 숫자를 뽑아옴
+	 */
+	private int getPieceFromPorket()
+	{
+		int	result;
+
+		if (porket.size() == 0)
+			setPiecePorket();
+		result = porket.get(0);
+		porket.remove(0);
+		return (result);
 	}
 
 	/*
