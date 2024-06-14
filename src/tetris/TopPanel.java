@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 class TopPanel extends JPanel 
 {
-	private static final String	IMAGE_PATH = "./../../nextpieces/";
+	private static final String	IMAGE_PATH = "nextpieces/";
 
 	/*
 	 * Main 프레임의 controller 객체

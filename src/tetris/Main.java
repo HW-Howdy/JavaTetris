@@ -10,7 +10,7 @@ public class Main extends JFrame
 {
 	/*
 	 * Main 생성자. Main 프레임을 생성 후 초기화 함
-	 * 또한 하위 패널들을 add함
+	 * 또한 하위 패널들을 add 함
 	 */
 	public Main(SidePanel sidePanel, TetrisPanel tetrisPanel, TopPanel topPanel)
 	{
