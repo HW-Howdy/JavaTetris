@@ -1,9 +1,8 @@
+package tetris;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
@@ -12,6 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class Controller
 {
+	private static final long serialVersionUID = 2L;
 	//Board의 정사각형 한 변의 길이
 	public static final int		SQUARE_SIZE = 25;
 
@@ -114,7 +114,7 @@ public class Controller
 	//현재 piece의 회전 상태
 	public int					rotation;
 
-	//현재 piece의 위피
+	//현재 piece의 위치
 	private Point				pieceLocation;
 
 	//현재 게임의 득점 상황

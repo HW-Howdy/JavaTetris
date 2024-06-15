@@ -1,3 +1,4 @@
+package tetris;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -6,6 +7,7 @@ import javax.swing.JPanel;
 
 public class TetrisPanel extends JPanel implements Runnable
 {
+	private static final long serialVersionUID = 3L;
 	/*
 	 * controller 객체
 	 */
@@ -110,7 +112,7 @@ public class TetrisPanel extends JPanel implements Runnable
 	{
 		int	newRotation = (controller.rotation + i) % 4;
 		if (newRotation < 0)
-			newRotation += 3;
+			newRotation += 4;
 		if (!isTouched(controller.getPieceLocation().x, controller.getPieceLocation().y, newRotation))
 			controller.rotation = newRotation;
 		getParent().repaint();
@@ -184,7 +186,7 @@ public class TetrisPanel extends JPanel implements Runnable
 				controller.board[i][j + 1] = controller.board[i][j];
 			}
 		}
-		if (Controller.TIME_GAP >= 250)
+		if (Controller.TIME_GAP > 250)
 			Controller.TIME_GAP -= 10;
 		return ;
 	}

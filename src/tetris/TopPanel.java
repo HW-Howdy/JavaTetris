@@ -1,3 +1,4 @@
+package tetris;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Label;
@@ -9,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 
 class TopPanel extends JPanel 
 {
+	private static final long serialVersionUID = 5L;
+	
 	private static final String	IMAGE_PATH = "nextpieces/";
 
 	/*

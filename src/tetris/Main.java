@@ -1,3 +1,5 @@
+package tetris;
+
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,6 +10,8 @@ import javax.swing.JFrame;
  */
 public class Main extends JFrame 
 {
+	private static final long serialVersionUID = 1L;
+
 	/*
 	 * Main 생성자. Main 프레임을 생성 후 초기화 함
 	 * 또한 하위 패널들을 add 함

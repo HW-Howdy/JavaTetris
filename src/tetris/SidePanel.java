@@ -1,3 +1,4 @@
+package tetris;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,6 +14,7 @@ import javax.swing.border.LineBorder;
 
 public class SidePanel extends JPanel implements Runnable
 {
+	private static final long serialVersionUID = 4L;
 	private static final String	IMAGE_PATH = "nextpieces/";
 	/*
 	 * Controller 객체
